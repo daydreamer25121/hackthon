@@ -78,3 +78,23 @@ export function addProductRequest(
     body: JSON.stringify(input),
   })
 }
+
+import type { Review as DbReview } from '../types'
+
+export type { DbReview }
+
+export function fetchReviews(productId: string) {
+  return apiFetch<{ reviews: DbReview[] }>(`/products/${productId}/reviews`)
+}
+
+export function addReviewRequest(
+  token: string,
+  productId: string,
+  input: { rating: number; comment: string },
+) {
+  return apiFetch<{ review: DbReview }>(`/products/${productId}/reviews`, {
+    method: 'POST',
+    token,
+    body: JSON.stringify(input),
+  })
+}

@@ -2,6 +2,7 @@ import { Router } from 'express'
 import mongoose from 'mongoose'
 import { Product } from '../models/Product.js'
 import { User } from '../models/User.js'
+import { Review } from '../models/Review.js'
 import { requireAuth, requireSeller } from '../middleware/auth.js'
 import { seedProducts } from '../seed/seedProducts.js'
 
@@ -75,5 +76,54 @@ productsRouter.post('/', requireAuth, requireSeller, async (req, res) => {
     })
   } catch {
     return res.status(500).json({ message: 'Failed to add product' })
+  }
+})
+
+// Review Routes
+productsRouter.get('/:productId/reviews', async (req, res) => {
+  try {
+    const { productId } = req.params
+    if (productId.startsWith('seed-')) {
+      return res.json({ reviews: [] })
+    }
+    const reviews = await Review.find({ productId }).sort({ createdAt: -1 })
+    res.json({ reviews })
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to load reviews' })
+  }
+})
+
+productsRouter.post('/:productId/reviews', requireAuth, async (req, res) => {
+  try {
+    const { productId } = req.params
+    const { rating, comment } = req.body
+    
+    if (productId.startsWith('seed-')) {
+       return res.status(400).json({ message: 'Cannot review sample products. Please review an added product.' })
+    }
+
+    if (!rating || !comment) {
+      return res.status(400).json({ message: 'Rating and comment are required' })
+    }
+
+    const user = await User.findById(req.user.userId)
+    if (!user) return res.status(404).json({ message: 'User not found' })
+
+    const review = await Review.create({
+      productId,
+      userId: req.user.userId,
+      userName: user.name,
+      rating: Number(rating),
+      comment,
+    })
+
+    // Optionally update product's aggregate rating
+    const allReviews = await Review.find({ productId })
+    const avgRating = allReviews.reduce((acc, r) => acc + r.rating, 0) / allReviews.length
+    await Product.findByIdAndUpdate(productId, { rating: Number(avgRating.toFixed(1)) })
+
+    res.status(201).json({ review })
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to add review' })
   }
 })

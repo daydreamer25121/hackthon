@@ -1,4 +1,6 @@
-export const categories = [
+import type { Category, Product } from '../types'
+
+export const categories: { slug: Category; label: string; description: string; image: string }[] = [
   {
     slug: 'clothes',
     label: 'Clothes',
@@ -41,18 +43,7 @@ export const categories = [
     image:
       'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80',
   },
-] as const
-
-export type Category = (typeof categories)[number]['slug']
-
-export type Product = {
-  id: string
-  title: string
-  price: number
-  rating: number
-  image: string
-  category: Category
-}
+]
 
 export const products: Product[] = [
   {
@@ -63,6 +54,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80',
     category: 'clothes',
+    sellerId: 'seed',
   },
   {
     id: 'c2',
@@ -72,6 +64,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=80',
     category: 'clothes',
+    sellerId: 'seed',
   },
   {
     id: 'c3',
@@ -81,6 +74,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80',
     category: 'clothes',
+    sellerId: 'seed',
   },
   {
     id: 'c4',
@@ -90,6 +84,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80',
     category: 'clothes',
+    sellerId: 'seed',
   },
   {
     id: 'c5',
@@ -99,6 +94,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400&q=80',
     category: 'clothes',
+    sellerId: 'seed',
   },
   {
     id: 'e1',
@@ -108,6 +104,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80',
     category: 'electronics',
+    sellerId: 'seed',
   },
   {
     id: 'e2',
@@ -117,6 +114,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80',
     category: 'electronics',
+    sellerId: 'seed',
   },
   {
     id: 'e3',
@@ -126,6 +124,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80',
     category: 'electronics',
+    sellerId: 'seed',
   },
   {
     id: 'e4',
@@ -135,6 +134,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80',
     category: 'electronics',
+    sellerId: 'seed',
   },
   {
     id: 'e5',
@@ -144,6 +144,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1608043152269-423dbba4e7e2?w=400&q=80',
     category: 'electronics',
+    sellerId: 'seed',
   },
   {
     id: 'e6',
@@ -153,6 +154,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&q=80',
     category: 'electronics',
+    sellerId: 'seed',
   },
   {
     id: 'h1',
@@ -162,6 +164,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80',
     category: 'home',
+    sellerId: 'seed',
   },
   {
     id: 'h2',
@@ -171,6 +174,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400&q=80',
     category: 'home',
+    sellerId: 'seed',
   },
   {
     id: 'h3',
@@ -180,6 +184,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=400&q=80',
     category: 'home',
+    sellerId: 'seed',
   },
   {
     id: 'b1',
@@ -189,6 +194,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80',
     category: 'beauty',
+    sellerId: 'seed',
   },
   {
     id: 'b2',
@@ -198,6 +204,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80',
     category: 'beauty',
+    sellerId: 'seed',
   },
   {
     id: 'bk1',
@@ -207,6 +214,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1495640388908-05fa85288e61?w=400&q=80',
     category: 'books',
+    sellerId: 'seed',
   },
   {
     id: 'bk2',
@@ -216,6 +224,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80',
     category: 'books',
+    sellerId: 'seed',
   },
   {
     id: 's1',
@@ -225,6 +234,7 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=400&q=80',
     category: 'sports',
+    sellerId: 'seed',
   },
   {
     id: 's2',
@@ -234,5 +244,6 @@ export const products: Product[] = [
     image:
       'https://images.unsplash.com/photo-1599447292412-0e95f0fefee5?w=400&q=80',
     category: 'sports',
+    sellerId: 'seed',
   },
 ]

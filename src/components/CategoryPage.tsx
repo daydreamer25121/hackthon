@@ -3,13 +3,17 @@ import { categories } from '../data/products'
 import { useProducts } from '../store/ProductsContext'
 import { useCart } from '../store/CartContext'
 import { HeaderActions } from './HeaderActions'
+import { ProductModal } from './ProductModal'
+import type { Product } from '../types'
 import './Dashboard.css'
+import { useState } from 'react'
 
 export function CategoryPage() {
   const { allProducts } = useProducts()
   const { addToCart } = useCart()
   const params = useParams<{ category: string }>()
   const category = categories.find((item) => item.slug === params.category)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
   if (!category) {
     return (
@@ -61,7 +65,12 @@ export function CategoryPage() {
 
           <ul className="dash-grid">
             {categoryProducts.map((product) => (
-              <li key={product.id} className="dash-card">
+              <li
+                key={product.id}
+                className="dash-card"
+                onClick={() => setSelectedProduct(product)}
+                style={{ cursor: 'pointer' }}
+              >
                 <article>
                   <div className="dash-card__image-wrap">
                     <img
@@ -97,6 +106,11 @@ export function CategoryPage() {
           </ul>
         </section>
       </main>
+
+      <ProductModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
     </div>
   )
 }
