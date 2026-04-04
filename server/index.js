@@ -4,6 +4,7 @@ import express from 'express'
 import { connectDb } from './config/db.js'
 import { authRouter } from './routes/auth.js'
 import { productsRouter } from './routes/products.js'
+import { chatRouter } from './routes/chat.js'
 
 const app = express()
 const port = Number(process.env.PORT || 5000)
@@ -17,6 +18,7 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/auth', authRouter)
 app.use('/api/products', productsRouter)
+app.use('/api/chat', chatRouter)
 
 async function start() {
   console.log('Connecting to MongoDB...')

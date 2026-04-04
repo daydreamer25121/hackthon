@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+mediapipe
+opencv-python-headless
+numpy
+scikit-learn
+python-multipart
+cors
+requests
+

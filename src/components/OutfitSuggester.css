@@ -1,0 +1,201 @@
+.outfit-suggester {
+  margin: 3rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.outfit-suggester__head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.outfit-suggester__head h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.outfit-suggester__head p {
+  color: #999;
+}
+
+.outfit-suggester__card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2.5rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.occasion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1rem;
+}
+
+.occasion-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ccc;
+}
+
+.occasion-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #f0c14b;
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.occasion-btn.active {
+  background: rgba(240, 193, 75, 0.1);
+  border-color: #f0c14b;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(240, 193, 75, 0.2);
+}
+
+.occ-icon {
+  font-size: 1.5rem;
+}
+
+.occ-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.outfit-suggester__input-group {
+  width: 100%;
+}
+
+.outfit-notes-input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.outfit-notes-input:focus {
+  outline: none;
+  border-color: #f0c14b;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.outfit-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.stylist-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(240, 193, 75, 0.1);
+  border-top: 3px solid #f0c14b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.outfit-loading p {
+  color: #f0c14b;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.outfit-result {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stylist-bubble {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  border-bottom-left-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sparkle {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 1.2rem;
+}
+
+.stylist-message {
+  color: #fff;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.categories-preview h4 {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.cat-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cat-tag {
+  background: rgba(240, 193, 75, 0.15);
+  color: #f0c14b;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(240, 193, 75, 0.2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.btn-apply-outfit {
+  width: 100%;
+  padding: 1.2rem;
+  background: #f0c14b;
+  color: #111;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(240, 193, 75, 0.3);
+  margin-top: 1rem;
+}
+
+.btn-apply-outfit:hover {
+  background: #ddb347;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(240, 193, 75, 0.4);
+}

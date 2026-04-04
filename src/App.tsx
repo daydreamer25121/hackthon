@@ -8,6 +8,7 @@ import { LoginPage } from './components/LoginPage'
 import { LoginSelector } from './components/LoginSelector'
 import { LoadingScreen } from './components/LoadingScreen'
 import { SellerDashboard } from './components/SellerDashboard'
+import { Chatbot } from './components/Chatbot'
 import './App.css'
 
 const SPLASH_MS = 2000
@@ -26,6 +27,7 @@ export default function App() {
   }
 
   return (
+    <>
     <Routes>
       <Route path="/" element={<Dashboard />} />
       <Route path="/category/:category" element={<CategoryPage />} />
@@ -44,5 +46,7 @@ export default function App() {
       />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    <Chatbot />
+    </>
   )
 }

@@ -1,11 +1,15 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { categories } from '../data/products'
 import { useProducts } from '../store/ProductsContext'
 import { HeaderActions } from './HeaderActions'
+import { SkinToneSuggester, type SkinToneResult } from './SkinToneSuggester'
+import { OutfitSuggester } from './OutfitSuggester'
 import './Dashboard.css'
 
 export function Dashboard() {
   const { allProducts } = useProducts()
+  const [skinToneResult, setSkinToneResult] = useState<SkinToneResult | null>(null)
 
   return (
     <div className="dashboard">
@@ -52,6 +56,9 @@ export function Dashboard() {
             </p>
           </div>
         </section>
+
+        <SkinToneSuggester result={skinToneResult} onResult={setSkinToneResult} />
+        <OutfitSuggester skinTone={skinToneResult?.palette} />
 
         <section className="dash-products" aria-labelledby="categories-heading">
           <div className="dash-products__head">
